@@ -1,23 +1,24 @@
-const tg = window.Telegram.WebApp
-export function useTelegram(){
+const tg = window.Telegram.WebApp;
+
+export function useTelegram() {
 
   const onClose = () => {
     tg.close()
   }
 
-  const onToggle = () => {
-    if (tg.MainButton.isVisible){
-      tg.MainButton.hide()
-    }else {
-      tg.MainButton.show()
+  const onToggleButton = () => {
+    if(tg.MainButton.isVisible) {
+      tg.MainButton.hide();
+    } else {
+      tg.MainButton.show();
     }
   }
 
-return{
+  return {
     onClose,
-    onToggle,
+    onToggleButton,
     tg,
     user: tg.initDataUnsafe?.user,
-}
-
+    queryId: tg.initDataUnsafe?.query_id,
+  }
 }
